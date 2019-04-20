@@ -2,7 +2,7 @@ from collections import Counter
 import scipy
 import numpy as np
 import pandas as pd
-from sklearn import svm, datasets
+from sklearn import svm, datasets , neighbors
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import average_precision_score, precision_score, recall_score
 from sklearn.metrics import precision_recall_fscore_support as score
@@ -86,14 +86,14 @@ class Classifier:
 
 
         #  Built-In K-Nearest Neighbour
-        self.clf_KNN = tree.DecisionTreeClassifier()
+        self.clf_KNN = neighbors.KNeighborsClassifier()
         self.clf_KNN.fit(X_train, y_train)
         accuracy = self.clf_KNN.score(X_test, y_test)
         print("Accuracy in KNN: %s" % accuracy)
 
 
         #  Built-In Support Vector Machine
-        self.clf_SVM = tree.DecisionTreeClassifier()
+        self.clf_SVM = svm.SVC()
         self.clf_SVM.fit(X_train, y_train)
         accuracy = self.clf_SVM.score(X_test, y_test)
         print("Accuracy in SVM: %s" % accuracy)
